@@ -815,7 +815,7 @@ section { padding: clamp(80px, 12vw, 150px) 0; }
   border-radius: 50%;
   border: 1px solid var(--rule);
   position: relative;
-  transition: transform 200ms var(--ease);
+  transition: transform 220ms var(--ease), box-shadow 260ms var(--ease);
 }
 .swatch[aria-pressed="true"] .swatch-dot { box-shadow: 0 0 0 2px var(--canvas), 0 0 0 3px var(--ink); }
 .swatch[data-locked="true"] .swatch-dot { border-style: dashed; background: var(--canvas-deep) !important; }
@@ -943,12 +943,36 @@ footer {
 .foot-bottom a:hover { color: var(--ink); }
 
 /* ===================== REVEAL ===================== */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 900ms var(--ease), transform 900ms var(--ease); }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 800ms var(--ease), transform 800ms var(--ease); }
 .reveal.in { opacity: 1; transform: translateY(0); }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---- Hero entrance (on load) ---- */
+@keyframes heroIn { to { opacity: 1; transform: none; } }
+.hero-copy > * { opacity: 0; transform: translateY(22px); animation: heroIn 760ms var(--ease) forwards; }
+.hero-copy > *:nth-child(1) { animation-delay: 60ms; }
+.hero-copy > *:nth-child(2) { animation-delay: 140ms; }
+.hero-copy > *:nth-child(3) { animation-delay: 220ms; }
+.hero-copy > *:nth-child(4) { animation-delay: 300ms; }
+.hero .product { opacity: 0; transform: translateY(24px) scale(0.97); animation: heroIn 920ms var(--ease) 260ms forwards; }
+
+/* ---- Swatch + pill micro-interactions ---- */
+.swatch:not([data-locked="true"]):hover .swatch-dot { transform: scale(1.12); }
+.swatch[aria-pressed="true"] .swatch-dot { transform: scale(1.06); }
+.size-pill:hover { border-color: var(--ink-mute); transform: translateY(-1px); }
+.size-pill { transition: border-color 200ms var(--ease), background 200ms var(--ease), transform 200ms var(--ease); }
+
+/* ---- PDP image cross-fade ---- */
+.pdp-main-photo img { transition: opacity 280ms var(--ease); }
+
+/* ---- Add-to-cart pop ---- */
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+.cart-count.pop { animation: pop 420ms var(--ease); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+  .hero-copy > *, .hero .product { opacity: 1 !important; transform: none !important; }
 }
 
 /* ===================== RESPONSIVE ===================== */

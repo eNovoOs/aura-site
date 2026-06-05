@@ -32,12 +32,19 @@
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (entry.target.dataset.revealDelay || 0) + 'ms';
         entry.target.classList.add('in');
         io.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    // stagger siblings that reveal together
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains('reveal'); });
+    var idx = sibs.indexOf(el);
+    if (idx > 0) el.dataset.revealDelay = Math.min(idx, 5) * 70;
+    io.observe(el);
+  });
 
   /* ---------- FAQ / accordion (if present) ---------- */
   document.querySelectorAll('.faq-item').forEach(function (item) {
@@ -112,6 +119,9 @@
       if (found) found.qty += 1;
       else items.push({ size: product, color: color, qty: 1, price: PRICES[product], img: productImg(product, color) });
       write(items);
+      document.querySelectorAll('[data-cart-count]').forEach(function (el) {
+        el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+      });
     },
     setQty: function (idx, qty) {
       var items = read();
@@ -143,15 +153,26 @@
     var bbImg = document.querySelector('[data-bb-img]');
 
     function fmt(n) { return '$' + n.toFixed(2); }
+    function swapImg(el, src, bone) {
+      if (!el) return;
+      el.classList.toggle('tone-bone', bone);
+      if (el.getAttribute('src') === src) return;
+      var pre = new Image();
+      pre.onload = function () {
+        el.style.opacity = '0';
+        setTimeout(function () { el.src = src; el.style.opacity = '1'; }, 160);
+      };
+      pre.src = src;
+    }
     function refresh() {
       var bone = state.color === 'Bone';
       var src = AuraCart.img(state.product, state.color);
       if (priceEl) priceEl.textContent = fmt(PRICES[state.product]);
-      if (mainImg) { mainImg.src = src; mainImg.classList.toggle('tone-bone', bone); }
+      swapImg(mainImg, src, bone);
       if (modelEl) modelEl.textContent = state.product;
       if (bbName) bbName.textContent = state.product + ' — ' + state.color;
       if (bbPrice) bbPrice.textContent = fmt(PRICES[state.product]);
-      if (bbImg) { bbImg.src = src; bbImg.classList.toggle('tone-bone', bone); }
+      swapImg(bbImg, src, bone);
     }
 
     pdp.querySelectorAll('[data-product]').forEach(function (btn) {

@@ -73,14 +73,14 @@
   var PRICES = { AuraFlex: 44.99, AuraFlow: 49.99 };
   var PRODUCT_IMG = {
     AuraFlex: {
-      Bone: 'assets/img/products/offwhite-1.svg',
-      Moss: 'assets/img/products/auraflex-matcha.svg',
-      Ink:  'assets/img/products/auraflex-black.svg'
+      Bone: 'assets/img/products/auraflex-bone.svg',
+      Moss: 'assets/img/products/auraflex-moss.svg',
+      Ink:  'assets/img/products/auraflex-ink.svg'
     },
     AuraFlow: {
-      Bone: 'assets/img/products/offwhite-2.svg',
-      Moss: 'assets/img/products/auraflow-matcha.svg',
-      Ink:  'assets/img/products/auraflow-black-1.svg'
+      Bone: 'assets/img/products/auraflow-bone.svg',
+      Moss: 'assets/img/products/auraflow-moss.svg',
+      Ink:  'assets/img/products/auraflow-ink.svg'
     }
   };
   function productImg(product, color) {

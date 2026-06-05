@@ -69,12 +69,24 @@
      CART — localStorage, single SKU, three sizes / colours
      ============================================================ */
   var STORE_KEY = 'aura_cart_v1';
-  var PRICES = { '18oz': 44.99, '24oz': 49.99, '32oz': 54.99 };
-  var COLOR_IMG = {
-    Bone: 'assets/img/flex-lavender.svg',
-    Moss: 'assets/img/flex-moss.svg',
-    Ink: 'assets/img/flex-ink.svg'
+  // Two products: AuraFlex (small) and AuraFlow (a little bigger)
+  var PRICES = { AuraFlex: 44.99, AuraFlow: 49.99 };
+  var PRODUCT_IMG = {
+    AuraFlex: {
+      Bone: 'assets/img/products/offwhite-1.svg',
+      Moss: 'assets/img/products/auraflex-matcha.svg',
+      Ink:  'assets/img/products/auraflex-black.svg'
+    },
+    AuraFlow: {
+      Bone: 'assets/img/products/offwhite-2.svg',
+      Moss: 'assets/img/products/auraflow-matcha.svg',
+      Ink:  'assets/img/products/auraflow-black-1.svg'
+    }
   };
+  function productImg(product, color) {
+    var p = PRODUCT_IMG[product] || PRODUCT_IMG.AuraFlow;
+    return p[color] || p.Ink;
+  }
 
   function read() {
     try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }
@@ -94,11 +106,11 @@
   }
 
   window.AuraCart = {
-    add: function (size, color) {
+    add: function (product, color) {
       var items = read();
-      var found = items.find(function (i) { return i.size === size && i.color === color; });
+      var found = items.find(function (i) { return i.size === product && i.color === color; });
       if (found) found.qty += 1;
-      else items.push({ size: size, color: color, qty: 1, price: PRICES[size] });
+      else items.push({ size: product, color: color, qty: 1, price: PRICES[product], img: productImg(product, color) });
       write(items);
     },
     setQty: function (idx, qty) {
@@ -114,16 +126,17 @@
       write(items);
     },
     items: read,
-    img: function (c) { return COLOR_IMG[c] || COLOR_IMG.Bone; }
+    img: productImg
   };
   paintCount();
 
   /* ---------- PDP variant selector + add to cart ---------- */
   var pdp = document.querySelector('[data-pdp]');
   if (pdp) {
-    var state = { size: '24oz', color: 'Bone' };
+    var state = { product: 'AuraFlow', color: 'Bone' };
     var priceEl = pdp.querySelector('[data-price]');
     var mainImg = pdp.querySelector('[data-main-img]');
+    var modelEl = pdp.querySelector('[data-model-name]');
     var addBtn = pdp.querySelector('[data-add]');
     var bbName = document.querySelector('[data-bb-name]');
     var bbPrice = document.querySelector('[data-bb-price]');
@@ -132,18 +145,20 @@
     function fmt(n) { return '$' + n.toFixed(2); }
     function refresh() {
       var bone = state.color === 'Bone';
-      if (priceEl) priceEl.textContent = fmt(PRICES[state.size]);
-      if (mainImg) { mainImg.src = AuraCart.img(state.color); mainImg.classList.toggle('tone-bone', bone); }
-      if (bbName) bbName.textContent = 'Aura — ' + state.size + ' ' + state.color;
-      if (bbPrice) bbPrice.textContent = fmt(PRICES[state.size]);
-      if (bbImg) { bbImg.src = AuraCart.img(state.color); bbImg.classList.toggle('tone-bone', bone); }
+      var src = AuraCart.img(state.product, state.color);
+      if (priceEl) priceEl.textContent = fmt(PRICES[state.product]);
+      if (mainImg) { mainImg.src = src; mainImg.classList.toggle('tone-bone', bone); }
+      if (modelEl) modelEl.textContent = state.product;
+      if (bbName) bbName.textContent = state.product + ' — ' + state.color;
+      if (bbPrice) bbPrice.textContent = fmt(PRICES[state.product]);
+      if (bbImg) { bbImg.src = src; bbImg.classList.toggle('tone-bone', bone); }
     }
 
-    pdp.querySelectorAll('[data-size]').forEach(function (btn) {
+    pdp.querySelectorAll('[data-product]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        pdp.querySelectorAll('[data-size]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        pdp.querySelectorAll('[data-product]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
         btn.setAttribute('aria-pressed', 'true');
-        state.size = btn.getAttribute('data-size');
+        state.product = btn.getAttribute('data-product');
         refresh();
       });
     });
@@ -158,7 +173,7 @@
     });
     if (addBtn) {
       addBtn.addEventListener('click', function () {
-        AuraCart.add(state.size, state.color);
+        AuraCart.add(state.product, state.color);
         var label = addBtn.querySelector('[data-add-label]') || addBtn;
         var original = label.textContent;
         label.textContent = 'Added to cart';
@@ -169,9 +184,14 @@
     /* preselect from query string (?color=Moss) */
     var params = new URLSearchParams(location.search);
     var qc = params.get('color');
-    if (qc && PRICES && COLOR_IMG[qc]) {
+    if (qc) {
       var target = pdp.querySelector('[data-color="' + qc + '"]');
       if (target && target.getAttribute('data-locked') !== 'true') target.click();
+    }
+    var qp = params.get('product');
+    if (qp) {
+      var ptarget = pdp.querySelector('[data-product="' + qp + '"]');
+      if (ptarget) ptarget.click();
     }
     refresh();
 
@@ -215,9 +235,10 @@
         var row = document.createElement('div');
         row.className = 'cart-line';
         var toneCls = it.color === 'Bone' ? ' tone-bone' : '';
+        var thumb = it.img || AuraCart.img(it.size, it.color);
         row.innerHTML =
-          '<div class="cart-line-thumb"><img class="' + toneCls.trim() + '" src="' + AuraCart.img(it.color) + '" alt="Aura ' + it.color + '"></div>' +
-          '<div><div class="cart-line-name">Aura.</div>' +
+          '<div class="cart-line-thumb"><img class="' + toneCls.trim() + '" src="' + thumb + '" alt="' + it.size + ' ' + it.color + '"></div>' +
+          '<div><div class="cart-line-name">' + it.size + '</div>' +
           '<div class="cart-line-variant">' + it.size + ' · ' + it.color + '</div>' +
           '<div class="qty"><button data-dec="' + idx + '" aria-label="Decrease">–</button><span>' + it.qty + '</span><button data-inc="' + idx + '" aria-label="Increase">+</button></div>' +
           '<button class="cart-remove" data-rm="' + idx + '">Remove</button></div>' +

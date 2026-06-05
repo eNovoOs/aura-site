@@ -808,8 +808,9 @@ section { padding: clamp(80px, 12vw, 150px) 0; }
 .size-pill[aria-pressed="true"] { border-color: var(--ink); background: var(--canvas-deep); }
 
 .swatch-row { display: flex; gap: 22px; margin-bottom: 38px; }
-.swatch { cursor: pointer; text-align: center; background: none; border: none; }
+.swatch { cursor: pointer; display: flex; flex-direction: column; align-items: center; background: none; border: none; }
 .swatch-dot {
+  display: inline-block;
   width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid var(--rule);

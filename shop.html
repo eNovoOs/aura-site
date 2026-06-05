@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aura — The bottle. Three sizes, three colors.</title>
+  <meta name="description" content="Aura. Stainless steel, food-grade 18/8. Six hours hot, twenty-four cold. A replaceable cap calibrated for any iPhone with MagSafe. One price per size, all colors equal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/aura.css" />
+</head>
+<body data-pdp>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg></button>
+    <a href="index.html" class="logo">Aura</a>
+    <div class="nav-links">
+      <a href="shop.html" aria-current="page">Shop</a>
+      <a href="colors.html">Colors</a>
+      <a href="journal.html">Journal</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-utils">
+      <a href="#" class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></a>
+      <a href="#" class="util-account" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></a>
+      <a href="cart.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count style="display:none">0</span></a>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top"><a href="index.html" class="logo">Aura</a><button class="mobile-nav-close nav-toggle" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button></div>
+  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="cart.html">Cart</a></div>
+  <div class="mobile-nav-foot"><a href="#">Search</a><a href="#">Account</a><a href="about.html">Contact</a></div>
+</div>
+
+<!-- ===== PDP1 — ABOVE THE FOLD ===== -->
+<header class="hero pdp" data-pdp-top>
+  <div class="wrap pdp-top">
+    <div class="pdp-gallery">
+      <div class="pdp-main-photo"><img data-main-img src="assets/img/flex-lavender.svg" alt="Aura bottle" /></div>
+    </div>
+    <div class="pdp-buy">
+      <h1>Aura.</h1>
+      <p class="pdp-sub">The best bottle you'll own.</p>
+
+      <div class="option-label">Size</div>
+      <div class="size-row">
+        <button class="size-pill" data-size="18oz"><span class="size-cap">18 oz</span><span class="size-price">$44.99</span></button>
+        <button class="size-pill" data-size="24oz" aria-pressed="true"><span class="size-cap">24 oz</span><span class="size-price">$49.99</span></button>
+        <button class="size-pill" data-size="32oz"><span class="size-cap">32 oz</span><span class="size-price">$54.99</span></button>
+      </div>
+
+      <div class="option-label">Color</div>
+      <div class="swatch-row">
+        <button class="swatch" data-color="Bone" aria-pressed="true"><span class="swatch-dot" style="background:#E6E2D5"></span><span class="swatch-name">Bone</span></button>
+        <button class="swatch" data-color="Moss"><span class="swatch-dot" style="background:#6B6E54"></span><span class="swatch-name">Moss</span></button>
+        <button class="swatch" data-color="Ink"><span class="swatch-dot" style="background:#1A1A1A"></span><span class="swatch-name">Ink</span></button>
+        <button class="swatch" data-color="locked-1" data-locked="true"><span class="swatch-dot"></span><span class="swatch-name">Soon · Jun 14</span></button>
+        <button class="swatch" data-color="locked-2" data-locked="true"><span class="swatch-dot"></span><span class="swatch-name">Soon · Jun 21</span></button>
+      </div>
+
+      <div class="pdp-price" data-price>$49.99</div>
+      <p class="pdp-assure" style="margin-top:0;margin-bottom:24px">One price. Every color. It does not go on sale.</p>
+      <button class="btn btn-block" data-add><span data-add-label>Add to cart</span></button>
+      <p class="pdp-assure">Ships now. Yours for life.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PDP2 — THE PHOTOGRAPHS ===== -->
+<section style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:clamp(40px,5vw,60px)">
+      <div class="section-label">The object</div>
+      <h2>Something you display,<br><em>not just use.</em></h2>
+    </div>
+    <div class="color-row">
+      <div class="reveal"><div class="pdp-main-photo"><img src="assets/img/hero-bottle.png" alt="Aura bottle with iPhone snapped to the cap" style="width:80%" /></div></div>
+      <div class="reveal"><div class="pdp-main-photo"><img src="assets/img/flex-ink.svg" alt="Cap detail — the magnetic mechanism" /></div></div>
+      <div class="reveal"><div class="pdp-main-photo"><img src="assets/img/flex-moss.svg" alt="Aura beside a laptop and mug for scale" /></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PDP3 — THE THING IN THREE PLACES ===== -->
+<section class="day">
+  <div class="wrap">
+    <div class="reveal day-head">
+      <div class="section-label">In three places</div>
+      <h2>The life it <em>belongs to.</em></h2>
+    </div>
+    <article class="act reveal">
+      <div class="act-meta">
+        <span class="act-time">08:14 — The desk</span>
+        <h3 class="act-place"><em>The desk.</em></h3>
+        <p class="act-line">Where the day gets decided. It is there for all of it.</p>
+      </div>
+      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle" src="assets/img/stage-desk.png" alt="" /></div></div>
+    </article>
+    <article class="act act-reverse reveal">
+      <div class="act-meta">
+        <span class="act-time">17:32 — The session</span>
+        <h3 class="act-place"><em>The session.</em></h3>
+        <p class="act-line">The angle is handled. So is everything else.</p>
+      </div>
+      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle" src="assets/img/stage-counter.png" alt="" /></div></div>
+    </article>
+    <article class="act reveal">
+      <div class="act-meta">
+        <span class="act-time">21:48 — The drive home</span>
+        <h3 class="act-place"><em>The drive home.</em></h3>
+        <p class="act-line">Still going. So are you.</p>
+      </div>
+      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle" src="assets/img/stage-cupholder.png" alt="" /></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== PDP4 — MADE PROPERLY (the standard, shown) ===== -->
+<section>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Made properly</div>
+      <h2>A short list of <em>decisions.</em></h2>
+    </div>
+    <div class="spec-table reveal" style="max-width:780px">
+      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Machined from a single piece of steel. Most bottles are molded. You can feel the difference.</span></div>
+      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">The cap took a year. The magnet holds any iPhone, full or empty, at any angle.</span></div>
+      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Heavier than it needs to be. The good things have weight.</span></div>
+      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Six hours hot. Twenty-four cold. Numbers we are quietly proud of.</span></div>
+      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Yours for life. The cap too. We replace anything that fails.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PDP5 — FROM THE FIELD ===== -->
+<section class="field" style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">The people who have it</div>
+      <h2>You'll know another one<br>when you <em>see it.</em></h2>
+    </div>
+    <div class="field-row" style="grid-template-columns:repeat(3,1fr)">
+      <figure class="field-photo-fig reveal"><div class="field-photo"><img src="assets/img/stage-desk.png" alt="" /></div><figcaption class="field-cap">Sasha. Vienna. Has opinions about most things.</figcaption></figure>
+      <figure class="field-photo-fig reveal"><div class="field-photo"><img src="assets/img/stage-counter.png" alt="" /></div><figcaption class="field-cap">Mateo. Mexico City. Films everything once.</figcaption></figure>
+      <figure class="field-photo-fig reveal"><div class="field-photo"><img src="assets/img/stage-cupholder.png" alt="" /></div><figcaption class="field-cap">Wren. Berlin. Does not settle.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PDP6 — CARE, WARRANTY, RETURNS ===== -->
+<section id="care">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Kept for life</div>
+      <h2>The last one <em>you'll buy.</em></h2>
+    </div>
+    <div class="reveal" style="max-width:760px">
+      <p class="editorial-body" style="max-width:none">This is the last one you will buy, so we built it to last and we stand behind it without an asterisk. Lifetime on the bottle. Lifetime on the cap. Thirty days to change your mind, prepaid, no questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PDP7 — STICKY BUY BAR ===== -->
+<div class="buybar">
+  <div class="wrap buybar-inner">
+    <div class="buybar-left">
+      <div class="buybar-thumb"><img data-bb-img src="assets/img/flex-lavender.svg" alt="" /></div>
+      <div>
+        <div class="buybar-name" data-bb-name>Aura — 24oz Bone</div>
+        <div class="buybar-price" data-bb-price>$49.99</div>
+      </div>
+    </div>
+    <button class="btn" data-bb-add>Add to cart</button>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="foot-logo">Aura</div><p class="foot-tag">A bottle that holds your phone. Made in small batches. Designed in Brooklyn.</p></div>
+      <div class="foot-col"><div class="foot-col-label">Object</div><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + Returns</a></div>
+      <div class="foot-col"><div class="foot-col-label">Brand</div><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#field">Field Notes</a></div>
+      <div class="foot-col"><div class="foot-col-label">Stay close</div><form class="foot-news" data-news-form novalidate><input type="email" placeholder="your@email.com" aria-label="Email" /><button type="submit">→</button></form><a href="#">Instagram — @aura</a><a href="about.html">Contact</a></div>
+    </div>
+    <div class="foot-bottom"><span>© Aura · 2026 · Made in small batches</span><span class="foot-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
+  </div>
+</footer>
+
+<script src="assets/aura.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aura — Eight colors. One drops every Friday.</title>
+  <meta name="description" content="Eight colors. One drops every Friday until the eight are out. Three are out now. Five are coming. Each color is its own short story." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/aura.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg></button>
+    <a href="index.html" class="logo">Aura</a>
+    <div class="nav-links"><a href="shop.html">Shop</a><a href="colors.html" aria-current="page">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a></div>
+    <div class="nav-utils">
+      <a href="#" class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></a>
+      <a href="#" class="util-account" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></a>
+      <a href="cart.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count style="display:none">0</span></a>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top"><a href="index.html" class="logo">Aura</a><button class="mobile-nav-close nav-toggle" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button></div>
+  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="cart.html">Cart</a></div>
+  <div class="mobile-nav-foot"><a href="#">Search</a><a href="#">Account</a><a href="about.html">Contact</a></div>
+</div>
+
+<!-- ===== C1 — HEADER ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">The finishes</div>
+    <h1 style="max-width:18ch">Eight colors. One arrives<br>each week. Each one was<br><em>chosen,</em> not added.</h1>
+    <p class="lede" style="margin-top:30px">Next: Friday. You will want to be early.</p>
+
+    <div class="drop-cal">
+      <div class="drop-cal-row"><span>Now</span><span>Bone · Moss · Ink</span><span class="status live">Available</span></div>
+      <div class="drop-cal-row"><span>Friday June 14</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+      <div class="drop-cal-row"><span>Friday June 21</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+      <div class="drop-cal-row"><span>Friday June 28</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+      <div class="drop-cal-row"><span>Friday July 5</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+      <div class="drop-cal-row"><span>Friday July 12</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== C2 — COLOR CARDS ===== -->
+<section style="padding-top:clamp(40px,5vw,60px)">
+  <div class="wrap">
+    <div class="colors-page-grid">
+
+      <article class="color-block reveal">
+        <div class="color-block-visual" style="background:#E6E2D5"><img class="tone-bone" src="assets/img/flex-lavender.svg" alt="Aura in Bone" /></div>
+        <div>
+          <div class="color-block-num">01 — Available now</div>
+          <h2 class="color-block-name">Bone</h2>
+          <p class="color-block-essay">The one that goes with everything you own, because you have taste.</p>
+          <a class="btn" href="shop.html?color=Bone">Shop Bone</a>
+        </div>
+      </article>
+
+      <article class="color-block reveal">
+        <div class="color-block-visual" style="background:#DCDFce"><img src="assets/img/flex-moss.svg" alt="Aura in Moss" /></div>
+        <div>
+          <div class="color-block-num">02 — Available now</div>
+          <h2 class="color-block-name">Moss</h2>
+          <p class="color-block-essay">Quiet. Most people will not have it. That is rather the point.</p>
+          <a class="btn" href="shop.html?color=Moss">Shop Moss</a>
+        </div>
+      </article>
+
+      <article class="color-block reveal">
+        <div class="color-block-visual" style="background:#E4E0D8"><img src="assets/img/flex-ink.svg" alt="Aura in Ink" /></div>
+        <div>
+          <div class="color-block-num">03 — Available now</div>
+          <h2 class="color-block-name">Ink</h2>
+          <p class="color-block-essay">The one you will reach for first.</p>
+          <a class="btn" href="shop.html?color=Ink">Shop Ink</a>
+        </div>
+      </article>
+
+      <article class="color-block locked reveal">
+        <div class="color-block-visual"></div>
+        <div>
+          <div class="color-block-num">04 — Arriving</div>
+          <h2 class="color-block-name">Friday, June 14</h2>
+          <p class="color-block-essay">The next finish has a name. It arrives Friday. You will want to be early.</p>
+          <span class="lock-date">Arrives Friday June 14</span>
+        </div>
+      </article>
+
+      <article class="color-block locked reveal">
+        <div class="color-block-visual"></div>
+        <div>
+          <div class="color-block-num">05 — Arriving</div>
+          <h2 class="color-block-name">Friday, June 21</h2>
+          <p class="color-block-essay">Chosen, not added. Worth the wait. The next one after that is already decided.</p>
+          <span class="lock-date">Arrives Friday June 21</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== C3 — VAULT (teaser) ===== -->
+<section style="background:var(--canvas-deep);border-top:1px solid var(--rule)">
+  <div class="wrap reveal">
+    <div class="section-label">The Vault</div>
+    <h2>Past arrivals,<br><em>told plainly.</em></h2>
+    <p class="section-sub">These have sold out. They are not coming back. The next one is on its way. Scarcity stated as fact — never as a countdown.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="foot-logo">Aura</div><p class="foot-tag">A bottle that holds your phone. Made in small batches. Designed in Brooklyn.</p></div>
+      <div class="foot-col"><div class="foot-col-label">Object</div><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + Returns</a></div>
+      <div class="foot-col"><div class="foot-col-label">Brand</div><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#field">Field Notes</a></div>
+      <div class="foot-col"><div class="foot-col-label">Stay close</div><form class="foot-news" data-news-form novalidate><input type="email" placeholder="your@email.com" aria-label="Email" /><button type="submit">→</button></form><a href="#">Instagram — @aura</a><a href="about.html">Contact</a></div>
+    </div>
+    <div class="foot-bottom"><span>© Aura · 2026 · Made in small batches</span><span class="foot-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
+  </div>
+</footer>
+
+<script src="assets/aura.js"></script>
+</body>
+</html>

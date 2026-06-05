@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100">
+<rect width="900" height="1100" fill="#E7E2D8"/>
+<rect x="6" y="6" width="888" height="1088" fill="none" stroke="#B5AD9E" stroke-width="2" stroke-dasharray="10 8"/>
+<text x="450.0" y="143" font-family="monospace" font-size="83" fill="#8A847D" text-anchor="middle" letter-spacing="2">FIELD 05</text>
+<text font-family="monospace" font-size="52" fill="#3A3631" text-anchor="middle"><tspan x="450.0" y="462">Theo, Montreal.</tspan><tspan x="450.0" y="532">Portrait by</tspan><tspan x="450.0" y="602">vintage car,</tspan><tspan x="450.0" y="672">snow, winter</tspan></text>
+<text x="450.0" y="1023" font-family="monospace" font-size="51" fill="#8A847D" text-anchor="middle">900x1100</text>
+</svg>

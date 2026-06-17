@@ -564,6 +564,7 @@ h1, h2, h3 { letter-spacing: -0.032em; }
   place-items: center;
   overflow: visible;
   box-shadow: none;
+  isolation: isolate;
 }
 
 .hero-art::before {
@@ -585,39 +586,71 @@ h1, h2, h3 { letter-spacing: -0.032em; }
   mix-blend-mode: multiply;
 }
 
+.hero-product-scene {
+  position: relative;
+  width: min(108%, 700px);
+  height: 100%;
+  min-height: 480px;
+  contain: layout paint;
+}
+
+.hero-bottle {
+  --float-x: 0px;
+  --float-y: 0px;
+  --tilt: 0deg;
+  --hover-y: 0px;
+  position: absolute;
+  left: var(--left);
+  bottom: var(--bottom);
+  z-index: var(--z);
+  width: var(--w);
+  max-width: none;
+  height: auto;
+  transform:
+    translate3d(calc(-50% + var(--float-x)), calc(var(--float-y) + var(--hover-y)), 0)
+    rotate(calc(var(--r) + var(--tilt)))
+    scale(var(--s));
+  transform-origin: center bottom;
+  will-change: transform;
+  transition: transform 0.7s var(--ease);
+}
+
+.hero-bottle:hover {
+  --hover-y: -18px;
+}
+
+.hero-bottle-flex-blue {
+  --left: 18%;
+  --bottom: 1%;
+  --w: 25%;
+  --r: -3deg;
+  --s: 0.96;
+  --z: 2;
+}
+
+.hero-bottle-flow-matcha {
+  --left: 50%;
+  --bottom: 0%;
+  --w: 36%;
+  --r: -1deg;
+  --s: 1;
+  --z: 4;
+}
+
+.hero-bottle-flex-pink {
+  --left: 82%;
+  --bottom: 1%;
+  --w: 25%;
+  --r: 3deg;
+  --s: 0.94;
+  --z: 3;
+}
+
 .tag-drop {
   position: absolute;
   top: clamp(1rem, 3vw, 2rem);
   left: clamp(1rem, 3vw, 2rem);
   z-index: 2;
-}
-
-.hero-badges {
-  position: absolute;
-  left: clamp(1rem, 3vw, 2rem);
-  right: clamp(1rem, 3vw, 2rem);
-  bottom: clamp(1rem, 3vw, 2rem);
-  z-index: 2;
-  display: flex;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-
-.hero-badges span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(246,245,242,0.88);
-  border: 1px solid rgba(22,19,14,0.08);
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
 }
 
 .waitlist {
@@ -764,9 +797,10 @@ h1, h2, h3 { letter-spacing: -0.032em; }
     min-height: 460px;
   }
 
-  .hero-badges {
-    bottom: 1.2rem;
+  .hero-product-scene {
+    min-height: 460px;
   }
+
 }
 
 @media (max-width: 920px) {
@@ -788,8 +822,7 @@ h1, h2, h3 { letter-spacing: -0.032em; }
     margin-inline: auto;
   }
 
-  .hero-links,
-  .hero-badges {
+  .hero-links {
     justify-content: center;
   }
 
@@ -798,6 +831,27 @@ h1, h2, h3 { letter-spacing: -0.032em; }
     min-height: auto;
     max-height: none;
     aspect-ratio: 4 / 5;
+  }
+
+  .hero-product-scene {
+    width: min(100%, 560px);
+    height: 100%;
+    min-height: auto;
+  }
+
+  .hero-bottle-flex-blue {
+    --left: 18%;
+    --w: 26%;
+  }
+
+  .hero-bottle-flow-matcha {
+    --left: 50%;
+    --w: 38%;
+  }
+
+  .hero-bottle-flex-pink {
+    --left: 82%;
+    --w: 26%;
   }
 }
 
@@ -880,6 +934,7 @@ h1, h2, h3 { letter-spacing: -0.032em; }
     width: 100%;
     aspect-ratio: 3 / 4;
     border-radius: 24px;
+    margin-top: -0.4rem;
   }
 
   .hero-art .hero-product {
@@ -888,8 +943,29 @@ h1, h2, h3 { letter-spacing: -0.032em; }
     transform: translateY(2%) scale(1.02);
   }
 
-  .hero-badges {
-    display: none;
+  .hero-product-scene {
+    width: 112%;
+  }
+
+  .hero-bottle-flex-blue {
+    --left: 17%;
+    --bottom: 2%;
+    --w: 31%;
+    --s: 0.93;
+  }
+
+  .hero-bottle-flow-matcha {
+    --left: 50%;
+    --bottom: 0%;
+    --w: 43%;
+    --s: 0.96;
+  }
+
+  .hero-bottle-flex-pink {
+    --left: 83%;
+    --bottom: 2%;
+    --w: 31%;
+    --s: 0.91;
   }
 
   .founder-grid {

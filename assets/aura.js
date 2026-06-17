@@ -57,6 +57,30 @@
     rev.forEach(function (r) { io.observe(r); });
   }
 
+  /* ---------- Hero bottles: subtle pointer drift ---------- */
+  var heroScene = document.querySelector('[data-hero-bottle-scene]');
+  if (heroScene && !reduce) {
+    var heroBottles = heroScene.querySelectorAll('.hero-bottle');
+    heroScene.addEventListener('pointermove', function (e) {
+      var rect = heroScene.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width - 0.5) * 28;
+      var y = ((e.clientY - rect.top) / rect.height - 0.5) * 18;
+      heroBottles.forEach(function (bottle, i) {
+        var depth = Number(bottle.getAttribute('data-depth') || 0.6);
+        bottle.style.setProperty('--float-x', (x * depth).toFixed(2) + 'px');
+        bottle.style.setProperty('--float-y', (y * depth * -0.7).toFixed(2) + 'px');
+        bottle.style.setProperty('--tilt', (x * depth * 0.035 + (i % 2 ? 0.25 : -0.25)).toFixed(2) + 'deg');
+      });
+    });
+    heroScene.addEventListener('pointerleave', function () {
+      heroBottles.forEach(function (bottle) {
+        bottle.style.removeProperty('--float-x');
+        bottle.style.removeProperty('--float-y');
+        bottle.style.removeProperty('--tilt');
+      });
+    });
+  }
+
   /* ---------- FAQ accordion ---------- */
   document.querySelectorAll('.q button').forEach(function (b) {
     b.addEventListener('click', function () {

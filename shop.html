@@ -3,193 +3,187 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Aura — The bottle. Three sizes, three colors.</title>
-  <meta name="description" content="Aura. Stainless steel, food-grade 18/8. Six hours hot, twenty-four cold. A replaceable cap calibrated for any iPhone with MagSafe. One price per size, all colors equal." />
+  <title>Aura — the bottle that holds your phone</title>
+  <meta name="description" content="Aura. MagSafe in the cap, at eye level. Double-walled stainless steel. One price per model, every color equal. AuraFlow & AuraFlex." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/aura.css" />
 </head>
-<body data-pdp>
+<body>
 
 <!-- ===== NAV ===== -->
-<nav id="nav">
+<nav class="nav" id="nav">
   <div class="wrap nav-inner">
     <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg></button>
     <a href="index.html" class="logo">Aura</a>
     <div class="nav-links">
       <a href="shop.html" aria-current="page">Shop</a>
       <a href="colors.html">Colors</a>
-      <a href="journal.html">Journal</a>
-      <a href="about.html">About</a>
     </div>
     <div class="nav-utils">
-      <a href="#" class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></a>
-      <a href="#" class="util-account" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></a>
+      <a href="index.html#waitlist">Get $20 code</a>
       <a href="cart.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count style="display:none">0</span></a>
     </div>
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-top"><a href="index.html" class="logo">Aura</a><button class="mobile-nav-close nav-toggle" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button></div>
-  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="cart.html">Cart</a></div>
-  <div class="mobile-nav-foot"><a href="#">Search</a><a href="#">Account</a><a href="about.html">Contact</a></div>
+  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="cart.html">Cart</a></div>
+  <div class="mobile-nav-foot"><a href="index.html#waitlist">Get $20 code</a><a href="https://www.tiktok.com/@aura">TikTok — @aura</a><a href="about.html">Contact</a></div>
 </div>
 
-<!-- ===== PDP1 — ABOVE THE FOLD ===== -->
-<header class="hero pdp" data-pdp-top>
-  <div class="wrap pdp-top">
-    <div class="pdp-gallery">
-      <div class="pdp-main-photo"><img data-main-img src="assets/img/products/auraflow-bone.svg" alt="AuraFlow bottle" /></div>
-    </div>
-    <div class="pdp-buy">
-      <h1>Aura.</h1>
-      <p class="pdp-sub">The best bottle you'll own. <span data-model-name>AuraFlow</span>.</p>
-
-      <div class="option-label">Model</div>
-      <div class="size-row">
-        <button class="size-pill" data-product="AuraFlex"><span class="size-cap">AuraFlex</span><span class="size-price">Small · $44.99</span></button>
-        <button class="size-pill" data-product="AuraFlow" aria-pressed="true"><span class="size-cap">AuraFlow</span><span class="size-price">A little bigger · $49.99</span></button>
-      </div>
-
-      <div class="option-label">Color</div>
-      <div class="swatch-row">
-        <button class="swatch" data-color="Bone" aria-pressed="true"><span class="swatch-dot" style="background:#E6E2D5"></span><span class="swatch-name">Off-white</span></button>
-        <button class="swatch" data-color="Moss"><span class="swatch-dot" style="background:#7C8A5A"></span><span class="swatch-name">Matcha</span></button>
-        <button class="swatch" data-color="Ink"><span class="swatch-dot" style="background:#1A1A1A"></span><span class="swatch-name">Black</span></button>
-        <button class="swatch" data-color="locked-1" data-locked="true"><span class="swatch-dot"></span><span class="swatch-name">Soon · Jun 14</span></button>
-        <button class="swatch" data-color="locked-2" data-locked="true"><span class="swatch-dot"></span><span class="swatch-name">Soon · Jun 21</span></button>
-      </div>
-
-      <div class="pdp-price" data-price>$49.99</div>
-      <p class="pdp-assure" style="margin-top:0;margin-bottom:24px">One price. Every color. It does not go on sale.</p>
-      <button class="btn btn-block" data-add><span data-add-label>Add to cart</span></button>
-      <p class="pdp-assure">Ships now. Yours for life.</p>
+<!-- ===== PDP TOP ===== -->
+<main class="wrap pdp">
+  <div class="gallery">
+    <div class="main">
+      <img id="pdpMain" src="assets/img/products/auraflow-pink.png" alt="AuraFlow bottle with an iPhone snapped to the MagSafe cap at eye level" />
     </div>
   </div>
-</header>
 
-<!-- ===== PDP2 — THE PHOTOGRAPHS ===== -->
-<section style="padding-top:clamp(40px,6vw,80px)">
-  <div class="wrap">
-    <div class="reveal" style="margin-bottom:clamp(40px,5vw,60px)">
-      <div class="section-label">The object</div>
-      <h2>Something you display,<br><em>not just use.</em></h2>
+  <div class="buy" id="buy">
+    <span class="eyebrow">The phone-mount bottle</span>
+    <h1>Aura.</h1>
+    <p class="sub">The phone-mount bottle that doesn't look like gear. MagSafe in the cap, at eye level.</p>
+
+    <div class="opt">
+      <span class="eyebrow">Model</span>
+      <div class="sizes">
+        <button class="size sel" data-model="AuraFlow" data-price="54"><span class="nm">AuraFlow</span><span class="meta">carry handle · all day</span></button>
+        <button class="size" data-model="AuraFlex" data-price="44"><span class="nm">AuraFlex</span><span class="meta">slim · everyday</span></button>
+      </div>
     </div>
-    <div class="color-row">
-      <div class="reveal"><div class="pdp-main-photo"><img class="phimg" src="assets/img/ph/pdp-phone.svg" alt="Bottle with iPhone snapped to the cap, any angle" /></div></div>
-      <div class="reveal"><div class="pdp-main-photo"><img class="phimg" src="assets/img/ph/pdp-cap.svg" alt="Cap detail macro: the magnetic mechanism, top-down" /></div></div>
-      <div class="reveal"><div class="pdp-main-photo"><img class="phimg" src="assets/img/ph/pdp-scale.svg" alt="Aura beside a laptop and mug for size reference" /></div></div>
+
+    <div class="opt">
+      <span class="eyebrow">Color</span>
+      <div class="swatches" id="swatches"><!-- populated per model by aura.js --></div>
+      <div class="swatch-name" id="swName">Pink</div>
+    </div>
+
+    <div class="price" id="price">$54
+      <small>One price per model. Every color equal.</small>
+    </div>
+    <button class="btn btn-block" id="addBtn">Save this color</button>
+    <p class="fineprint">In the box: the bottle · the MagSafe cap · a ring for any phone · a surprise sticker pack.</p>
+    <div class="assure"><span>Free MagSafe ring</span><span>Founders' drop</span><span>$20 code for first 500</span><span>Launch details by email</span></div>
+  </div>
+</main>
+
+<!-- ===== PROOF BAR ===== -->
+<section class="proofbar">
+  <ul class="wrap" style="padding-inline:0">
+    <li><span class="ic">⌁</span>Eye level, in the cap</li>
+    <li><span class="ic">⌖</span>MagSafe + ring for any phone</li>
+    <li><span class="ic">◴</span>Built for daily carry</li>
+    <li><span class="ic">❄</span>Cold-ready steel</li>
+    <li><span class="ic">∞</span>Terms before launch</li>
+  </ul>
+</section>
+
+<!-- ===== FEATURE MOMENTS (real photography) ===== -->
+<section class="feature">
+  <div class="wrap reveal">
+    <img src="assets/img/lifestyle.png" alt="The Aura bottle left out on a desk beside a laptop and a mug" />
+    <h2>Not gear.<br>Something you <em>carry.</em></h2>
+    <p>Every other phone-mount bottle looks like gym equipment. This one looks like something you'd leave out on the desk on purpose.</p>
+  </div>
+</section>
+
+<section class="feature alt">
+  <div class="wrap reveal">
+    <img src="assets/img/magsafe.png" alt="An iPhone snapped to the Aura MagSafe cap at eye level" />
+    <h2>Your phone rides<br>on top.</h2>
+    <p>MagSafe in the cap, so your phone sits at eye level — hands-free for the call, the set, the recipe, the lecture. The cap took 18 versions to get right.</p>
+  </div>
+</section>
+
+<!-- ===== COMPATIBILITY ===== -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="reveal">Will it hold your phone?</h2>
+    <div class="compat-grid">
+      <div class="compat-card reveal"><div class="ph"></div><h3>iPhone 12 &amp; later</h3><p>Snaps straight to the cap. No case needed, no ring.</p></div>
+      <div class="compat-card reveal"><div class="ph"></div><h3>iPhone with a case</h3><p>Works with any MagSafe case. Most modern ones are.</p></div>
+      <div class="compat-card reveal"><div class="ph"></div><h3>Android &amp; the rest</h3><p>Works with the adhesive MagSafe ring in every box.</p></div>
+    </div>
+    <p class="fine reveal">Android and older phones use the ring in the box. Final stability and compatibility notes ship with the launch details.</p>
+  </div>
+</section>
+
+<!-- ===== SPEC BLOCK (feeling first, spec after) ===== -->
+<section class="section" style="background:var(--cream-2)">
+  <div class="wrap">
+    <h2 class="reveal" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">A short list of decisions.</h2>
+    <!-- VERIFY all specs with engineering before launch: cold/hot hours, 18/8 grade, leakproof rating, magnet hold weight, empty-bottle stability -->
+    <div class="specs">
+      <div class="spec-row reveal"><div class="k">Phone, handled.</div><div class="v">MagSafe in the cap — your phone sits at eye level, at the angle you set. We spent the whole build getting it right.</div></div>
+      <div class="spec-row reveal"><div class="k">Cold-ready.</div><div class="v">Double-walled stainless steel, built for the water you keep forgetting to drink.</div></div>
+      <div class="spec-row reveal"><div class="k">No sweat, no taste.</div><div class="v">Made to sit on the desk without turning into one more thing you have to clean around.</div></div>
+      <div class="spec-row reveal"><div class="k">Cupholder-minded.</div><div class="v">AuraFlex is the slimmer everyday carry. AuraFlow is the all-day handle version.</div></div>
+      <div class="spec-row reveal"><div class="k">Launch-backed.</div><div class="v">Warranty, return, and care terms will be confirmed before the first drop opens.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== PDP3 — THE THING IN THREE PLACES ===== -->
-<section class="day">
+<!-- ===== BUILD STORY (replaces reviews until real reviews exist) ===== -->
+<section class="section reviews">
   <div class="wrap">
-    <div class="reveal day-head">
-      <div class="section-label">In three places</div>
-      <h2>The life it <em>belongs to.</em></h2>
-    </div>
-    <article class="act reveal">
-      <div class="act-meta">
-        <span class="act-time">08:14 — The desk</span>
-        <h3 class="act-place"><em>The desk.</em></h3>
-        <p class="act-line">Where the day gets decided. It is there for all of it.</p>
-      </div>
-      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle phimg" src="assets/img/ph/pdp-g1.svg" alt="Bottle on desk in use, lifestyle" /></div></div>
-    </article>
-    <article class="act act-reverse reveal">
-      <div class="act-meta">
-        <span class="act-time">17:32 — The session</span>
-        <h3 class="act-place"><em>The session.</em></h3>
-        <p class="act-line">The angle is handled. So is everything else.</p>
-      </div>
-      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle phimg" src="assets/img/ph/pdp-g2.svg" alt="Bottle at the gym in use, lifestyle" /></div></div>
-    </article>
-    <article class="act reveal">
-      <div class="act-meta">
-        <span class="act-time">21:48 — The drive home</span>
-        <h3 class="act-place"><em>The drive home.</em></h3>
-        <p class="act-line">Still going. So are you.</p>
-      </div>
-      <div class="stage"><div class="bottle-wrap"><img class="stage-bottle phimg" src="assets/img/ph/pdp-g3.svg" alt="Bottle in car cupholder, lifestyle" /></div></div>
-    </article>
+    <h2 class="reveal" style="max-width:20ch">We didn't ship the first one that worked.</h2>
+    <p class="reveal" style="color:var(--ink-soft);max-width:54ch;margin-top:1.1rem;font-size:var(--s-1);line-height:1.35">18 versions. Six leaked. Eleven held but the magnet drifted. We shipped the eighteenth — seventeen just wasn't it yet.</p>
+    <p class="reveal" style="font-family:var(--mono);font-size:var(--s--1);color:var(--ink-soft);margin-top:1.6rem;letter-spacing:0.03em">Real reviews land when the first orders do. We won't fake them.</p>
   </div>
 </section>
 
-<!-- ===== PDP4 — MADE PROPERLY (the standard, shown) ===== -->
-<section>
+<!-- ===== FAQ ===== -->
+<section class="section">
   <div class="wrap">
-    <div class="reveal">
-      <div class="section-label">Made properly</div>
-      <h2>A short list of <em>decisions.</em></h2>
-    </div>
-    <div class="spec-table reveal" style="max-width:780px">
-      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Machined from a single piece of steel. Most bottles are molded. You can feel the difference.</span></div>
-      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">The cap took a year. The magnet holds any iPhone, full or empty, at any angle.</span></div>
-      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Heavier than it needs to be. The good things have weight.</span></div>
-      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Six hours hot. Twenty-four cold. Numbers we are quietly proud of.</span></div>
-      <div class="spec-row" style="grid-template-columns:1fr"><span class="spec-val" style="font-style:normal">Yours for life. The cap too. We replace anything that fails.</span></div>
-    </div>
+    <h2 class="reveal" style="margin-bottom:1.5rem">Before you ask.</h2>
+    <div class="q"><button>Does the magnet work when the bottle is empty? <span class="sign">+</span></button><div class="ans"><div><p>The phone sits on the cap, centered over the bottle. Final stability notes will be published before launch.</p></div></div></div>
+    <div class="q"><button>Will it fit my car cupholder? <span class="sign">+</span></button><div class="ans"><div><p>AuraFlex is the slimmer everyday carry. AuraFlow is the all-day handle version. Final dimensions will be listed before the first drop opens.</p></div></div></div>
+    <div class="q"><button>Do I need a case for it to work? <span class="sign">+</span></button><div class="ans"><div><p>No case needed for iPhone 12 and later. Any MagSafe case works too. For Android or older phones, the adhesive ring in the box adds the magnet.</p></div></div></div>
+    <div class="q"><button>Is it leakproof and dishwasher safe? <span class="sign">+</span></button><div class="ans"><div><p>Care, cleaning, and leak-resistance details will be confirmed before launch so nothing ships with vague fine print.</p></div></div></div>
+    <div class="q"><button>What's actually covered by the warranty? <span class="sign">+</span></button><div class="ans"><div><p>Warranty and return terms will be posted before orders open. The goal is simple: no receipt hunt, no mystery policy.</p></div></div></div>
   </div>
 </section>
 
-<!-- ===== PDP5 — FROM THE FIELD ===== -->
-<section class="field" style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+<!-- ===== CLOSING / CARE ===== -->
+<section class="final" id="care">
   <div class="wrap">
-    <div class="reveal">
-      <div class="section-label">The people who have it</div>
-      <h2>You'll know another one<br>when you <em>see it.</em></h2>
-    </div>
-    <div class="field-row" style="grid-template-columns:repeat(3,1fr)">
-      <figure class="field-photo-fig reveal"><div class="field-photo"><img class="phimg" src="assets/img/ph/pdp-g4.svg" alt="Bottle detail: thread + seal, anti-leak proof" /></div><figcaption class="field-cap">Sasha. Vienna. Has opinions about most things.</figcaption></figure>
-      <figure class="field-photo-fig reveal"><div class="field-photo"><img class="phimg" src="assets/img/ph/pdp-g5.svg" alt="Bottle in hand, weight + scale" /></div><figcaption class="field-cap">Mateo. Mexico City. Films everything once.</figcaption></figure>
-      <figure class="field-photo-fig reveal"><div class="field-photo"><img class="phimg" src="assets/img/ph/pdp-g6.svg" alt="Three colors grouped, family shot" /></div><figcaption class="field-cap">Wren. Berlin. Does not settle.</figcaption></figure>
-    </div>
+    <span class="sticker" style="background:#9FB792">stay in your flow</span>
+    <h2 style="margin-top:1.5rem">Get the code<br>before launch.</h2>
+    <p>The first 500 people on the list get $20 off when the founders' drop opens.</p>
+    <a class="btn" href="index.html#waitlist">Join the first 500 <svg class="arr" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
-
-<!-- ===== PDP6 — CARE, WARRANTY, RETURNS ===== -->
-<section id="care">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="section-label">Kept for life</div>
-      <h2>The last one <em>you'll buy.</em></h2>
-    </div>
-    <div class="reveal" style="max-width:760px">
-      <p class="editorial-body" style="max-width:none">This is the last one you will buy, so we built it to last and we stand behind it without an asterisk. Lifetime on the bottle. Lifetime on the cap. Thirty days to change your mind, prepaid, no questions.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PDP7 — STICKY BUY BAR ===== -->
-<div class="buybar">
-  <div class="wrap buybar-inner">
-    <div class="buybar-left">
-      <div class="buybar-thumb"><img data-bb-img src="assets/img/products/auraflow-bone.svg" alt="" /></div>
-      <div>
-        <div class="buybar-name" data-bb-name>AuraFlow — Bone</div>
-        <div class="buybar-price" data-bb-price>$49.99</div>
-      </div>
-    </div>
-    <button class="btn" data-bb-add>Add to cart</button>
-  </div>
-</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div><div class="foot-logo">Aura</div><p class="foot-tag">A bottle that holds your phone. Made in small batches. Designed in Brooklyn.</p></div>
-      <div class="foot-col"><div class="foot-col-label">Object</div><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + Returns</a></div>
-      <div class="foot-col"><div class="foot-col-label">Brand</div><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#field">Field Notes</a></div>
-      <div class="foot-col"><div class="foot-col-label">Stay close</div><form class="foot-news" data-news-form novalidate><input type="email" placeholder="your@email.com" aria-label="Email" /><button type="submit">→</button></form><a href="#">Instagram — @aura</a><a href="about.html">Contact</a></div>
+      <div>
+        <a href="index.html" class="logo">Aura</a>
+        <p class="note">The water bottle that holds your phone. Everyday essentials for the next generation.</p>
+      </div>
+      <div class="foot-col"><h4>Object</h4><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + returns</a></div>
+      <div class="foot-col"><h4>Brand</h4><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#founder">Field notes</a></div>
+      <div class="foot-col"><h4>Stay close</h4><a href="https://www.tiktok.com/@aura">TikTok — @aura</a><a href="about.html">Contact</a></div>
     </div>
-    <div class="foot-bottom"><span>© Aura · 2026 · Made in small batches</span><span class="foot-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
+    <div class="foot-bottom"><span>© Aura · EST 2026 · Miami</span><span class="links"><span>Privacy soon</span><span>Terms soon</span><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
   </div>
 </footer>
 
+<!-- ===== STICKY BUY BAR ===== -->
+<div class="buybar" id="buybar">
+  <div class="wrap buybar-inner">
+    <div class="buybar-left">
+      <div class="buybar-thumb"><img id="bbThumb" src="assets/img/products/auraflow-pink.png" alt="" /></div>
+      <div><div class="nm" id="bbName">AuraFlow — Pink</div><div class="pr" id="bbPrice">$54 · free MagSafe ring</div></div>
+    </div>
+    <button class="btn" id="bbAdd">Save color</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">Saved for launch</div>
 <script src="assets/aura.js"></script>
 </body>
 </html>

@@ -1,19 +1,34 @@
 /* ============================================================
-   AURA — shared site behaviour
-   Editorial store. No urgency timers, no popups. Calm by design.
+   AURA — shared site behaviour (on-brand rebuild)
+   Founder-led, drop-driven. Real localStorage cart, real product
+   photography, MagSafe-forward PDP. No fake urgency timers.
    ============================================================ */
 (function () {
   'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- NAV border on scroll ---------- */
+  /* ---------- Tumbler SVG (color-driven, hero arc) ---------- */
+  var TUMBLER_SVG =
+    '<svg viewBox="0 0 100 240" aria-hidden="true">' +
+    '<path d="M68 80 C 92 86, 92 150, 68 156 L 68 144 C 80 140, 80 96, 68 92 Z" fill="var(--shadow)"/>' +
+    '<path d="M22 64 Q22 56 30 56 L70 56 Q78 56 78 64 L78 188 Q78 204 64 208 L36 208 Q22 204 22 188 Z" fill="var(--body)"/>' +
+    '<path d="M62 56 L78 56 L78 188 Q78 204 64 208 L57 208 Q70 200 70 186 L70 60 Z" fill="var(--shadow)" opacity="0.4"/>' +
+    '<path d="M30 198 L70 198 L66 216 L34 216 Z" fill="var(--shadow)" opacity="0.45"/>' +
+    '<rect x="22" y="48" width="56" height="14" rx="3" fill="var(--shadow)"/>' +
+    '<rect x="26" y="34" width="48" height="16" rx="4" fill="var(--lid)"/>' +
+    '<rect x="46" y="14" width="8" height="22" rx="3" fill="var(--lid)"/>' +
+    '<rect x="30" y="70" width="5" height="118" rx="3" fill="#fff" opacity="0.22"/>' +
+    '</svg>';
+  document.querySelectorAll('.tumbler').forEach(function (t) {
+    t.insertAdjacentHTML('afterbegin', TUMBLER_SVG);
+  });
+
+  /* ---------- Nav shadow on scroll ---------- */
   var nav = document.getElementById('nav');
   if (nav) {
-    var onScroll = function () {
-      if (window.scrollY > 8) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    var onNav = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onNav, { passive: true });
+    onNav();
   }
 
   /* ---------- Mobile nav ---------- */
@@ -22,87 +37,59 @@
   if (toggle && mobile) {
     toggle.addEventListener('click', function () { mobile.classList.add('open'); });
     mobile.addEventListener('click', function (e) {
-      if (e.target.closest('a') || e.target.closest('.mobile-nav-close')) {
-        mobile.classList.remove('open');
-      }
+      if (e.target.closest('a') || e.target.closest('.mobile-nav-close')) mobile.classList.remove('open');
     });
   }
 
-  /* ---------- Scroll reveal ---------- */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.transitionDelay = (entry.target.dataset.revealDelay || 0) + 'ms';
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) {
-    // stagger siblings that reveal together
-    var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains('reveal'); });
-    var idx = sibs.indexOf(el);
-    if (idx > 0) el.dataset.revealDelay = Math.min(idx, 5) * 70;
-    io.observe(el);
-  });
+  /* ---------- Scroll reveal (staggered) ---------- */
+  var rev = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && rev.length) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          var sibs = Array.prototype.filter.call(e.target.parentElement.children, function (c) { return c.classList.contains('reveal'); });
+          e.target.style.transitionDelay = Math.max(0, sibs.indexOf(e.target)) * 65 + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    rev.forEach(function (r) { io.observe(r); });
+  }
 
-  /* ---------- FAQ / accordion (if present) ---------- */
-  document.querySelectorAll('.faq-item').forEach(function (item) {
-    item.addEventListener('click', function () {
-      var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
-      if (!wasOpen) item.classList.add('open');
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.q button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var q = b.parentElement, open = q.classList.contains('open');
+      document.querySelectorAll('.q').forEach(function (x) { x.classList.remove('open'); });
+      if (!open) q.classList.add('open');
     });
   });
 
-  /* ---------- Newsletter / stay-close forms ---------- */
+  /* ---------- Waitlist / newsletter forms ---------- */
   document.querySelectorAll('[data-news-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var input = form.querySelector('input');
-      var email = (input.value || '').trim();
-      if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-        input.style.color = '#B0563E';
-        setTimeout(function () { input.style.color = ''; }, 1500);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((input.value || '').trim())) {
+        input.style.boxShadow = '0 0 0 2px #DD8170 inset';
+        setTimeout(function () { input.style.boxShadow = ''; }, 1200);
         return;
       }
-      var success = form.parentElement.querySelector('.form-success');
+      var success = form.parentElement.querySelector('.success, .form-success');
       if (success) { form.style.display = 'none'; success.classList.add('show'); }
-      else { input.value = ''; input.placeholder = 'You are on the list — thank you.'; }
+      else { var btn = form.querySelector('button'); btn.textContent = "You're in ✓"; btn.disabled = true; }
     });
   });
 
   /* ============================================================
-     CART — localStorage, single SKU, three sizes / colours
+     CART — localStorage. Two models (AuraFlow / AuraFlex),
+     every color equal, founders' drop. Each line carries its
+     real product image + price.
      ============================================================ */
-  var STORE_KEY = 'aura_cart_v1';
-  // Two products: AuraFlex (small) and AuraFlow (a little bigger)
-  var PRICES = { AuraFlex: 44.99, AuraFlow: 49.99 };
-  var PRODUCT_IMG = {
-    AuraFlex: {
-      Bone: 'assets/img/products/auraflex-bone.svg',
-      Moss: 'assets/img/products/auraflex-moss.svg',
-      Ink:  'assets/img/products/auraflex-ink.svg'
-    },
-    AuraFlow: {
-      Bone: 'assets/img/products/auraflow-bone.svg',
-      Moss: 'assets/img/products/auraflow-moss.svg',
-      Ink:  'assets/img/products/auraflow-ink.svg'
-    }
-  };
-  function productImg(product, color) {
-    var p = PRODUCT_IMG[product] || PRODUCT_IMG.AuraFlow;
-    return p[color] || p.Ink;
-  }
-
-  function read() {
-    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }
-    catch (e) { return []; }
-  }
-  function write(items) {
-    localStorage.setItem(STORE_KEY, JSON.stringify(items));
-    paintCount();
-  }
+  var STORE_KEY = 'aura_cart_v2';
+  function read() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch (e) { return []; } }
+  function write(items) { localStorage.setItem(STORE_KEY, JSON.stringify(items)); paintCount(); }
   function count() { return read().reduce(function (n, i) { return n + i.qty; }, 0); }
   function paintCount() {
     var n = count();
@@ -111,13 +98,12 @@
       el.style.display = n > 0 ? 'inline-flex' : 'none';
     });
   }
-
   window.AuraCart = {
-    add: function (product, color) {
+    add: function (model, color, price, img) {
       var items = read();
-      var found = items.find(function (i) { return i.size === product && i.color === color; });
+      var found = items.find(function (i) { return i.model === model && i.color === color; });
       if (found) found.qty += 1;
-      else items.push({ size: product, color: color, qty: 1, price: PRICES[product], img: productImg(product, color) });
+      else items.push({ model: model, color: color, qty: 1, price: price, img: img });
       write(items);
       document.querySelectorAll('[data-cart-count]').forEach(function (el) {
         el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
@@ -130,112 +116,132 @@
       if (items[idx].qty === 0) items.splice(idx, 1);
       write(items);
     },
-    remove: function (idx) {
-      var items = read();
-      items.splice(idx, 1);
-      write(items);
-    },
-    items: read,
-    img: productImg
+    remove: function (idx) { var items = read(); items.splice(idx, 1); write(items); },
+    items: read
   };
   paintCount();
 
-  /* ---------- PDP variant selector + add to cart ---------- */
-  var pdp = document.querySelector('[data-pdp]');
-  if (pdp) {
-    var state = { product: 'AuraFlow', color: 'Bone' };
-    var priceEl = pdp.querySelector('[data-price]');
-    var mainImg = pdp.querySelector('[data-main-img]');
-    var modelEl = pdp.querySelector('[data-model-name]');
-    var addBtn = pdp.querySelector('[data-add]');
-    var bbName = document.querySelector('[data-bb-name]');
-    var bbPrice = document.querySelector('[data-bb-price]');
-    var bbImg = document.querySelector('[data-bb-img]');
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById('toast');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
 
-    function fmt(n) { return '$' + n.toFixed(2); }
-    function swapImg(el, src, bone) {
-      if (!el) return;
-      el.classList.toggle('tone-bone', bone);
-      if (el.getAttribute('src') === src) return;
-      var pre = new Image();
-      pre.onload = function () {
-        el.style.opacity = '0';
-        setTimeout(function () { el.src = src; el.style.opacity = '1'; }, 160);
-      };
-      pre.src = src;
+  /* ============================================================
+     PDP — model / color / add-to-cart
+     Two real, approved models (not two sizes of one shape):
+     AuraFlow = the carry-handle tumbler, AuraFlex = the slim bottle.
+     Confirm capacity/oz + final price per model before launch.
+     ============================================================ */
+  var MODELS = {
+    AuraFlow: {
+      price: 54,
+      colors: [
+        { name: 'Pink',     hex: '#E08572', img: 'assets/img/products/auraflow-pink.png' },
+        { name: 'Lavender', hex: '#C6B4D6', img: 'assets/img/products/auraflow-lavender.png' },
+        { name: 'Matcha',   hex: '#7A8B6F', img: 'assets/img/products/auraflow-matcha.png' },
+        { name: 'Blue',     hex: '#8FC2CF', img: 'assets/img/products/auraflow-blue.png' },
+        { name: 'Black',    hex: '#1A1A1A', img: 'assets/img/products/auraflow-black.png' }
+      ]
+    },
+    AuraFlex: {
+      price: 44,
+      colors: [
+        { name: 'Pink',     hex: '#E7B8B8', img: 'assets/img/products/auraflex-pink.png' },
+        { name: 'Lavender', hex: '#C6B4D6', img: 'assets/img/products/auraflex-lavender.png' },
+        { name: 'Matcha',   hex: '#7A8B6F', img: 'assets/img/products/auraflex-matcha.png' },
+        { name: 'Blue',     hex: '#8FC2CF', img: 'assets/img/products/auraflex-blue.png' },
+        { name: 'Black',    hex: '#1A1A1A', img: 'assets/img/products/auraflex-black.png' },
+        { name: 'Beige',    hex: '#C9B49A', img: 'assets/img/products/auraflex-beige.png' },
+        { name: 'Forest',   hex: '#2E3A34', img: 'assets/img/products/auraflex-green.png' },
+        { name: 'Navy',     hex: '#1F2A3A', img: 'assets/img/products/auraflex-navy.png' },
+        { name: 'Clay',     hex: '#C4877E', img: 'assets/img/products/auraflex-clay.png' }
+      ]
+    }
+  };
+
+  var buy = document.getElementById('buy');
+  if (buy) {
+    var state = { model: 'AuraFlow', price: MODELS.AuraFlow.price, color: 'Pink', img: MODELS.AuraFlow.colors[0].img };
+    var priceEl = document.getElementById('price');
+    var swName = document.getElementById('swName');
+    var swatchesEl = document.getElementById('swatches');
+    var pdpMain = document.getElementById('pdpMain');
+    var bbName = document.getElementById('bbName');
+    var bbPrice = document.getElementById('bbPrice');
+    var bbThumb = document.getElementById('bbThumb');
+
+    function setMain(src) {
+      if (!pdpMain) return;
+      pdpMain.style.opacity = '0';
+      setTimeout(function () { pdpMain.src = src; pdpMain.style.opacity = '1'; }, 150);
     }
     function refresh() {
-      var bone = state.color === 'Bone';
-      var src = AuraCart.img(state.product, state.color);
-      if (priceEl) priceEl.textContent = fmt(PRICES[state.product]);
-      swapImg(mainImg, src, bone);
-      if (modelEl) modelEl.textContent = state.product;
-      if (bbName) bbName.textContent = state.product + ' — ' + state.color;
-      if (bbPrice) bbPrice.textContent = fmt(PRICES[state.product]);
-      swapImg(bbImg, src, bone);
+      if (priceEl) priceEl.firstChild.textContent = '$' + state.price + ' ';
+      if (swName) swName.textContent = state.color;
+      if (bbName) bbName.textContent = state.model + ' — ' + state.color;
+      if (bbPrice) bbPrice.textContent = '$' + state.price + ' · free MagSafe ring';
+      if (bbThumb) bbThumb.src = state.img;
+    }
+    function selectColor(c, el) {
+      document.querySelectorAll('.swatch').forEach(function (x) { x.classList.remove('sel'); });
+      if (el) el.classList.add('sel');
+      state.color = c.name; state.img = c.img;
+      refresh();
+      setMain(c.img);
+    }
+    function renderSwatches() {
+      if (!swatchesEl) return;
+      swatchesEl.innerHTML = '';
+      MODELS[state.model].colors.forEach(function (c, i) {
+        var b = document.createElement('button');
+        b.className = 'swatch' + (i === 0 ? ' sel' : '');
+        b.style.background = c.hex;
+        b.setAttribute('aria-label', c.name);
+        b.addEventListener('click', function () { selectColor(c, b); });
+        swatchesEl.appendChild(b);
+      });
     }
 
-    pdp.querySelectorAll('[data-product]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        pdp.querySelectorAll('[data-product]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-        btn.setAttribute('aria-pressed', 'true');
-        state.product = btn.getAttribute('data-product');
-        refresh();
+    document.querySelectorAll('.size').forEach(function (s) {
+      s.addEventListener('click', function () {
+        document.querySelectorAll('.size').forEach(function (x) { x.classList.remove('sel'); });
+        s.classList.add('sel');
+        state.model = s.dataset.model; state.price = +s.dataset.price;
+        renderSwatches();
+        selectColor(MODELS[state.model].colors[0], swatchesEl && swatchesEl.firstElementChild);
       });
     });
-    pdp.querySelectorAll('[data-color]').forEach(function (btn) {
-      if (btn.getAttribute('data-locked') === 'true') return;
-      btn.addEventListener('click', function () {
-        pdp.querySelectorAll('[data-color]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-        btn.setAttribute('aria-pressed', 'true');
-        state.color = btn.getAttribute('data-color');
-        refresh();
-      });
-    });
-    if (addBtn) {
-      addBtn.addEventListener('click', function () {
-        AuraCart.add(state.product, state.color);
-        var label = addBtn.querySelector('[data-add-label]') || addBtn;
-        var original = label.textContent;
-        label.textContent = 'Added to cart';
-        setTimeout(function () { label.textContent = original; }, 1600);
-      });
-    }
 
-    /* preselect from query string (?color=Moss) */
-    var params = new URLSearchParams(location.search);
-    var qc = params.get('color');
-    if (qc) {
-      var target = pdp.querySelector('[data-color="' + qc + '"]');
-      if (target && target.getAttribute('data-locked') !== 'true') target.click();
-    }
-    var qp = params.get('product');
-    if (qp) {
-      var ptarget = pdp.querySelector('[data-product="' + qp + '"]');
-      if (ptarget) ptarget.click();
-    }
-    refresh();
+    renderSwatches();
+    selectColor(MODELS[state.model].colors[0], swatchesEl && swatchesEl.firstElementChild);
 
-    /* sticky buy bar */
-    var bar = document.querySelector('.buybar');
-    var topAnchor = pdp.querySelector('[data-pdp-top]');
-    if (bar && topAnchor) {
-      var barIo = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) bar.classList.remove('show');
-          else bar.classList.add('show');
-        });
-      }, { threshold: 0 });
-      barIo.observe(topAnchor);
-      var bbAdd = bar.querySelector('[data-bb-add]');
-      if (bbAdd) bbAdd.addEventListener('click', function () { if (addBtn) addBtn.click(); });
+    function add() {
+      AuraCart.add(state.model, state.color, state.price, state.img);
+      showToast('Saved for launch — ' + state.model + ', ' + state.color);
+    }
+    var addBtn = document.getElementById('addBtn');
+    if (addBtn) addBtn.addEventListener('click', add);
+    var bbAdd = document.getElementById('bbAdd');
+    if (bbAdd) bbAdd.addEventListener('click', add);
+
+    /* sticky buybar after hero scrolled */
+    var buybar = document.getElementById('buybar');
+    if (buybar) {
+      var onBar = function () { buybar.classList.toggle('show', window.scrollY > 620); };
+      window.addEventListener('scroll', onBar, { passive: true });
+      onBar();
     }
   }
 
   /* ---------- Cart page render ---------- */
   var cartRoot = document.querySelector('[data-cart-page]');
   if (cartRoot) {
-    var FREE_SHIP = 75;
+    var FREE_SHIP = 0; // founders' drop ships free
     function money(n) { return '$' + n.toFixed(2); }
     function render() {
       var items = AuraCart.items();
@@ -255,45 +261,25 @@
         subtotal += it.price * it.qty;
         var row = document.createElement('div');
         row.className = 'cart-line';
-        var toneCls = it.color === 'Bone' ? ' tone-bone' : '';
-        var thumb = it.img || AuraCart.img(it.size, it.color);
         row.innerHTML =
-          '<div class="cart-line-thumb"><img class="' + toneCls.trim() + '" src="' + thumb + '" alt="' + it.size + ' ' + it.color + '"></div>' +
-          '<div><div class="cart-line-name">' + it.size + '</div>' +
-          '<div class="cart-line-variant">' + it.size + ' · ' + it.color + '</div>' +
+          '<div class="cart-line-thumb"><img src="' + (it.img || '') + '" alt="' + it.model + ' ' + it.color + '"></div>' +
+          '<div><div class="cart-line-name">' + it.model + '</div>' +
+          '<div class="cart-line-variant">' + it.color + ' · founders’ drop</div>' +
           '<div class="qty"><button data-dec="' + idx + '" aria-label="Decrease">–</button><span>' + it.qty + '</span><button data-inc="' + idx + '" aria-label="Increase">+</button></div>' +
           '<button class="cart-remove" data-rm="' + idx + '">Remove</button></div>' +
           '<div class="cart-line-price">' + money(it.price * it.qty) + '</div>';
         lines.appendChild(row);
       });
-      var shipTxt = subtotal >= FREE_SHIP ? 'Free' : money(7.5);
       cartRoot.querySelector('[data-subtotal]').textContent = money(subtotal);
-      cartRoot.querySelector('[data-shipping]').textContent = shipTxt;
-      var total = subtotal + (subtotal >= FREE_SHIP ? 0 : 7.5);
-      cartRoot.querySelector('[data-total]').textContent = money(total);
+      cartRoot.querySelector('[data-shipping]').textContent = 'Free';
+      cartRoot.querySelector('[data-total]').textContent = money(subtotal);
     }
     cartRoot.addEventListener('click', function (e) {
-      var inc = e.target.getAttribute('data-inc');
-      var dec = e.target.getAttribute('data-dec');
-      var rm = e.target.getAttribute('data-rm');
       var items = AuraCart.items();
-      if (inc !== null && inc !== undefined && e.target.hasAttribute('data-inc')) {
-        AuraCart.setQty(+inc, items[+inc].qty + 1); render();
-      } else if (e.target.hasAttribute('data-dec')) {
-        AuraCart.setQty(+dec, items[+dec].qty - 1); render();
-      } else if (e.target.hasAttribute('data-rm')) {
-        AuraCart.remove(+rm); render();
-      }
+      if (e.target.hasAttribute('data-inc')) { var i = +e.target.getAttribute('data-inc'); AuraCart.setQty(i, items[i].qty + 1); render(); }
+      else if (e.target.hasAttribute('data-dec')) { var d = +e.target.getAttribute('data-dec'); AuraCart.setQty(d, items[d].qty - 1); render(); }
+      else if (e.target.hasAttribute('data-rm')) { AuraCart.remove(+e.target.getAttribute('data-rm')); render(); }
     });
-    var addUpsell = cartRoot.querySelector('[data-add-upsell]');
-    if (addUpsell) {
-      addUpsell.addEventListener('click', function () {
-        var items = AuraCart.items();
-        items.push({ size: 'Straws', color: 'set of 3', qty: 1, price: 8.99 });
-        localStorage.setItem('aura_cart_v1', JSON.stringify(items));
-        paintCount(); render();
-      });
-    }
     render();
   }
 })();

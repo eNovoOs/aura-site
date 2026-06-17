@@ -3,103 +3,112 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Aura — Eight colors. One drops every Friday.</title>
-  <meta name="description" content="Eight colors. One drops every Friday until the eight are out. Three are out now. Five are coming. Each color is its own short story." />
+  <title>Aura — Pick your color.</title>
+  <meta name="description" content="An eight-color system. Five colorways live now in AuraFlow; the rest unlock as the list grows." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/aura.css" />
 </head>
 <body>
 
-<nav id="nav">
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
   <div class="wrap nav-inner">
     <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg></button>
     <a href="index.html" class="logo">Aura</a>
-    <div class="nav-links"><a href="shop.html">Shop</a><a href="colors.html" aria-current="page">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a></div>
+    <div class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="colors.html" aria-current="page">Colors</a>
+    </div>
     <div class="nav-utils">
-      <a href="#" class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></a>
-      <a href="#" class="util-account" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></a>
+      <a href="index.html#waitlist">Get $20 code</a>
       <a href="cart.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count style="display:none">0</span></a>
     </div>
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-top"><a href="index.html" class="logo">Aura</a><button class="mobile-nav-close nav-toggle" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button></div>
-  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="cart.html">Cart</a></div>
-  <div class="mobile-nav-foot"><a href="#">Search</a><a href="#">Account</a><a href="about.html">Contact</a></div>
+  <div class="mobile-nav-links"><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="cart.html">Cart</a></div>
+  <div class="mobile-nav-foot"><a href="index.html#waitlist">Get $20 code</a><a href="https://www.tiktok.com/@aura">TikTok — @aura</a><a href="about.html">Contact</a></div>
 </div>
 
-<!-- ===== C1 — HEADER ===== -->
-<header class="hero">
+<!-- ===== HEADER ===== -->
+<header class="page-head">
   <div class="wrap">
-    <div class="eyebrow">The finishes</div>
-    <h1 style="max-width:18ch">Eight colors. One arrives<br>each week. Each one was<br><em>chosen,</em> not added.</h1>
-    <p class="lede" style="margin-top:30px">Next: Friday. You will want to be early.</p>
+    <span class="tape">THE COLOR SYSTEM</span>
+    <h1>Pick your color.</h1>
+    <p class="lede">Eight colors in the system. Five live now in AuraFlow — the others unlock as the list grows. We post the vote on TikTok.</p>
 
-    <div class="drop-cal">
-      <div class="drop-cal-row"><span>Now</span><span>Bone · Moss · Ink</span><span class="status live">Available</span></div>
-      <div class="drop-cal-row"><span>Friday June 14</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
-      <div class="drop-cal-row"><span>Friday June 21</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
-      <div class="drop-cal-row"><span>Friday June 28</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
-      <div class="drop-cal-row"><span>Friday July 5</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
-      <div class="drop-cal-row"><span>Friday July 12</span><span>Chosen, unnamed</span><span class="status">Soon</span></div>
+    <div class="drop-list">
+      <div class="drop-row"><span>Live now</span><span class="span2">Pink · Lavender · Matcha · Blue · Black</span><span class="status live">Available</span></div>
+      <div class="drop-row"><span>Unlocks next</span><span class="span2">Cream · Navy · Forest · Clay</span><span class="status">As the list grows</span></div>
     </div>
   </div>
 </header>
 
-<!-- ===== C2 — COLOR CARDS ===== -->
-<section style="padding-top:clamp(40px,5vw,60px)">
+<!-- ===== COLOR ESSAYS ===== -->
+<section style="padding-block:clamp(2rem,4vw,3rem) clamp(4rem,7vw,7rem)">
   <div class="wrap">
-    <div class="colors-page-grid">
+    <div class="color-essay-grid">
 
-      <article class="color-block reveal">
-        <div class="color-block-visual" style="background:#E6E2D5"><img class="tone-bone" src="assets/img/products/auraflex-bone.svg" alt="Aura in Off-white" /></div>
-        <div>
-          <div class="color-block-num">01 — Available now</div>
-          <h2 class="color-block-name">Bone</h2>
-          <p class="color-block-essay">The one that goes with everything you own, because you have taste.</p>
-          <a class="btn" href="shop.html?color=Bone">Shop Bone</a>
+      <article class="color-essay-card reveal">
+        <a href="shop.html"><div class="visual"><img src="assets/img/products/auraflow-pink.png" alt="AuraFlow in Pink"></div></a>
+        <div class="body">
+          <div class="num">01</div>
+          <h2>Pink</h2>
+          <p>The one that ends up in everyone's "what's in my bag." Loud and yours.</p>
+          <a class="btn" href="shop.html">Shop Pink</a>
         </div>
       </article>
 
-      <article class="color-block reveal">
-        <div class="color-block-visual" style="background:#DCDFce"><img src="assets/img/products/auraflex-moss.svg" alt="Aura in Matcha" /></div>
-        <div>
-          <div class="color-block-num">02 — Available now</div>
-          <h2 class="color-block-name">Moss</h2>
-          <p class="color-block-essay">Quiet. Most people will not have it. That is rather the point.</p>
-          <a class="btn" href="shop.html?color=Moss">Shop Moss</a>
+      <article class="color-essay-card reveal">
+        <a href="shop.html"><div class="visual"><img src="assets/img/products/auraflow-lavender.png" alt="AuraFlow in Lavender"></div></a>
+        <div class="body">
+          <div class="num">02</div>
+          <h2>Lavender</h2>
+          <p>Soft, a little unexpected. The one people ask you about.</p>
+          <a class="btn" href="shop.html">Shop Lavender</a>
         </div>
       </article>
 
-      <article class="color-block reveal">
-        <div class="color-block-visual" style="background:#E4E0D8"><img src="assets/img/products/auraflex-ink.svg" alt="Aura in Black" /></div>
-        <div>
-          <div class="color-block-num">03 — Available now</div>
-          <h2 class="color-block-name">Ink</h2>
-          <p class="color-block-essay">The one you will reach for first.</p>
-          <a class="btn" href="shop.html?color=Ink">Shop Ink</a>
+      <article class="color-essay-card reveal">
+        <a href="shop.html"><div class="visual"><img src="assets/img/products/auraflow-matcha.png" alt="AuraFlow in Matcha"></div></a>
+        <div class="body">
+          <div class="num">03</div>
+          <h2>Matcha</h2>
+          <p>Calm, grown, goes with everything. Quietly premium.</p>
+          <a class="btn" href="shop.html">Shop Matcha</a>
         </div>
       </article>
 
-      <article class="color-block locked reveal">
-        <div class="color-block-visual"></div>
-        <div>
-          <div class="color-block-num">04 — Arriving</div>
-          <h2 class="color-block-name">Friday, June 14</h2>
-          <p class="color-block-essay">The next finish has a name. It arrives Friday. You will want to be early.</p>
-          <span class="lock-date">Arrives Friday June 14</span>
+      <article class="color-essay-card reveal">
+        <a href="shop.html"><div class="visual"><img src="assets/img/products/auraflow-blue.png" alt="AuraFlow in Blue"></div></a>
+        <div class="body">
+          <div class="num">04</div>
+          <h2>Blue</h2>
+          <p>Cool, clean, on camera all day. The easy yes.</p>
+          <a class="btn" href="shop.html">Shop Blue</a>
         </div>
       </article>
 
-      <article class="color-block locked reveal">
-        <div class="color-block-visual"></div>
-        <div>
-          <div class="color-block-num">05 — Arriving</div>
-          <h2 class="color-block-name">Friday, June 21</h2>
-          <p class="color-block-essay">Chosen, not added. Worth the wait. The next one after that is already decided.</p>
-          <span class="lock-date">Arrives Friday June 21</span>
+      <article class="color-essay-card reveal">
+        <a href="shop.html"><div class="visual"><img src="assets/img/products/auraflow-black.png" alt="AuraFlow in Black"></div></a>
+        <div class="body">
+          <div class="num">05</div>
+          <h2>Black</h2>
+          <p>The one you reach for first. Nothing to think about.</p>
+          <a class="btn" href="shop.html">Shop Black</a>
+        </div>
+      </article>
+
+      <article class="color-essay-card soon reveal">
+        <div class="visual"></div>
+        <div class="body">
+          <div class="num">Unlocks next</div>
+          <h2>Cream · Navy · Forest · Clay</h2>
+          <p>Four more in the system. They unlock as the list grows — one a week. We post the vote on TikTok.</p>
+          <a class="text-link" href="https://www.tiktok.com/@aura">Vote on the next drop →</a>
         </div>
       </article>
 
@@ -107,27 +116,40 @@
   </div>
 </section>
 
-<!-- ===== C3 — VAULT (teaser) ===== -->
-<section style="background:var(--canvas-deep);border-top:1px solid var(--rule)">
-  <div class="wrap reveal">
-    <div class="section-label">The Vault</div>
-    <h2>Past arrivals,<br><em>told plainly.</em></h2>
-    <p class="section-sub">These have sold out. They are not coming back. The next one is on its way. Scarcity stated as fact — never as a countdown.</p>
+<!-- ===== ALSO IN AURAFLEX ===== -->
+<section class="colors" style="background:var(--cream-2)">
+  <div class="wrap">
+    <span class="tape">the slim everyday size</span>
+    <h2 style="margin-top:1rem">Also in AuraFlex.</h2>
+    <p class="lede">Prefer the slim, no-handle everyday bottle? AuraFlex ships in nine colorways — including Beige, Forest, Navy and Clay you won't find on AuraFlow yet.</p>
+    <div class="color-grid">
+      <div class="cw reveal"><div class="chip"><img src="assets/img/products/auraflex-pink.png" alt="AuraFlex in Pink"></div><div class="name">Pink</div><div class="meta">AuraFlex</div></div>
+      <div class="cw reveal"><div class="chip"><img src="assets/img/products/auraflex-matcha.png" alt="AuraFlex in Matcha"></div><div class="name">Matcha</div><div class="meta">AuraFlex</div></div>
+      <div class="cw reveal"><div class="chip"><img src="assets/img/products/auraflex-blue.png" alt="AuraFlex in Blue"></div><div class="name">Blue</div><div class="meta">AuraFlex</div></div>
+      <div class="cw reveal"><div class="chip"><img src="assets/img/products/auraflex-beige.png" alt="AuraFlex in Beige"></div><div class="name">Beige</div><div class="meta">AuraFlex</div></div>
+      <div class="cw reveal"><div class="chip"><img src="assets/img/products/auraflex-navy.png" alt="AuraFlex in Navy"></div><div class="name">Navy</div><div class="meta">AuraFlex</div></div>
+    </div>
+    <div style="margin-top:clamp(2rem,4vw,3rem)"><a class="btn" href="shop.html">See both models</a></div>
   </div>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div><div class="foot-logo">Aura</div><p class="foot-tag">A bottle that holds your phone. Made in small batches. Designed in Brooklyn.</p></div>
-      <div class="foot-col"><div class="foot-col-label">Object</div><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + Returns</a></div>
-      <div class="foot-col"><div class="foot-col-label">Brand</div><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#field">Field Notes</a></div>
-      <div class="foot-col"><div class="foot-col-label">Stay close</div><form class="foot-news" data-news-form novalidate><input type="email" placeholder="your@email.com" aria-label="Email" /><button type="submit">→</button></form><a href="#">Instagram — @aura</a><a href="about.html">Contact</a></div>
+      <div>
+        <a href="index.html" class="logo">Aura</a>
+        <p class="note">The water bottle that holds your phone. Everyday essentials for the next generation.</p>
+      </div>
+      <div class="foot-col"><h4>Object</h4><a href="shop.html">Shop</a><a href="colors.html">Colors</a><a href="shop.html#care">Care + returns</a></div>
+      <div class="foot-col"><h4>Brand</h4><a href="about.html">About</a><a href="journal.html">Journal</a><a href="index.html#founder">Field notes</a></div>
+      <div class="foot-col"><h4>Stay close</h4><a href="https://www.tiktok.com/@aura">TikTok — @aura</a><a href="about.html">Contact</a></div>
     </div>
-    <div class="foot-bottom"><span>© Aura · 2026 · Made in small batches</span><span class="foot-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
+    <div class="foot-bottom"><span>© Aura · EST 2026 · Miami</span><span class="links"><span>Privacy soon</span><span>Terms soon</span><a href="shop.html#care">Shipping</a><a href="shop.html#care">Returns</a></span></div>
   </div>
 </footer>
 
+<div class="toast" id="toast">Saved for launch</div>
 <script src="assets/aura.js"></script>
 </body>
 </html>

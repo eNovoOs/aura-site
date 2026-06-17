@@ -1,5 +1,5 @@
 /* ============================================================
-   AURA — shared site behaviour (on-brand rebuild)
+   AURA - shared site behaviour (on-brand rebuild)
    Founder-led, drop-driven. Real localStorage cart, real product
    photography, MagSafe-forward PDP. No fake urgency timers.
    ============================================================ */
@@ -107,7 +107,7 @@
   });
 
   /* ============================================================
-     CART — localStorage. Two models (AuraFlow / AuraFlex),
+     CART - localStorage. Two models (AuraFlow / AuraFlex),
      every color equal, founders' drop. Each line carries its
      real product image + price.
      ============================================================ */
@@ -156,7 +156,7 @@
   }
 
   /* ============================================================
-     PDP — model / color / add-to-cart
+     PDP - model / color / add-to-cart
      Two real, approved models (not two sizes of one shape):
      AuraFlow = the carry-handle tumbler, AuraFlex = the slim bottle.
      Confirm capacity/oz + final price per model before launch.
@@ -207,7 +207,7 @@
     function refresh() {
       if (priceEl) priceEl.firstChild.textContent = '$' + state.price + ' ';
       if (swName) swName.textContent = state.color;
-      if (bbName) bbName.textContent = state.model + ' — ' + state.color;
+      if (bbName) bbName.textContent = state.model + ' · ' + state.color;
       if (bbPrice) bbPrice.textContent = '$' + state.price + ' · free MagSafe ring';
       if (bbThumb) bbThumb.src = state.img;
     }
@@ -246,7 +246,7 @@
 
     function add() {
       AuraCart.add(state.model, state.color, state.price, state.img);
-      showToast('Saved for launch — ' + state.model + ', ' + state.color);
+      showToast('Saved for launch · ' + state.model + ', ' + state.color);
     }
     var addBtn = document.getElementById('addBtn');
     if (addBtn) addBtn.addEventListener('click', add);

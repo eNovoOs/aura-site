@@ -9,9 +9,9 @@
    ============================================================ */
 
 :root {
-  /* canvas — clean, near-white, faintly warm (Apple-calm, not cream) */
-  --cream:     #F6F5F2;  /* page background — close to white, not totally white */
-  --cream-2:   #EFEEEA;  /* alternating sections, cards-on-tint */
+  /* canvas — near-white, the faintest warmth (Apple-calm) */
+  --cream:     #FBFAF8;  /* page background — almost white */
+  --cream-2:   #F4F3EF;  /* alternating sections, cards-on-tint */
   --paper:     #FFFFFF;  /* crisp white cards */
   --ink:       #16130E;
   --ink-soft:  #5A5347;
@@ -75,7 +75,7 @@ em { font-style: normal; font-weight: 500; opacity: 0.55; }
 .btn-block { width: 100%; justify-content: center; padding-block: 1.05em; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--cream); }
-.text-link { font-family: var(--mono); font-size: var(--s--1); letter-spacing: 0.05em; text-decoration: underline; color: var(--ink); display: inline-flex; align-items: center; gap: 0.5em; }
+.text-link { font-family: var(--body); font-weight: 500; font-size: var(--s--1); letter-spacing: 0; text-decoration: underline; text-underline-offset: 3px; color: var(--ink); display: inline-flex; align-items: center; gap: 0.5em; }
 .text-link .arr { width: 0.85em; height: 0.85em; transition: transform 0.3s var(--ease); }
 .text-link:hover .arr { transform: translateX(3px); }
 
@@ -125,8 +125,8 @@ em { font-style: normal; font-weight: 500; opacity: 0.55; }
 .arc { position: relative; height: clamp(220px, 34vw, 380px); margin-bottom: -1rem; pointer-events: none; }
 .arc svg.arc-line { position: absolute; inset: 0; width: 100%; height: 100%; }
 .arc .tumbler { position: absolute; bottom: 0; left: 50%; width: clamp(58px,7vw,92px); transform-origin: 50% 340px; }
-.drop-pill { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--body); font-weight: 500; font-size: var(--s--1); letter-spacing: -0.01em; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.45em 0.9em; margin-bottom: 1.4rem; text-transform: none; }
-.drop-pill .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--coral); animation: pulse 1.8s ease-in-out infinite; }
+.drop-pill { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--display); font-weight: 600; font-size: var(--s--1); letter-spacing: -0.01em; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.5em 1em; margin-bottom: 1.4rem; text-transform: none; }
+.drop-pill .dot { display: none; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
 .hero { padding-top: clamp(2.5rem, 5vw, 4.5rem); }
 .hero h1 { font-size: var(--s-4); font-weight: 800; }
@@ -169,7 +169,7 @@ em { font-style: normal; font-weight: 500; opacity: 0.55; }
 .cw .chip { aspect-ratio: 3/4; border-radius: 18px; display: grid; place-items: center; position: relative; overflow: hidden; background: var(--cream-2); }
 .cw .chip img { width: 84%; height: 84%; object-fit: contain; }
 .cw .name { font-family: var(--display); font-weight: 700; margin-top: 0.7rem; font-size: var(--s-0); }
-.cw .meta { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.cw .meta { font-family: var(--body); font-weight: 500; font-size: 0.8rem; letter-spacing: 0; text-transform: none; color: var(--ink-mute); }
 .cw.soon .chip { opacity: 0.55; }
 .cw.soon .chip::after { content:'SOON'; position:absolute; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; background: var(--paper); color: var(--ink); padding: 0.3em 0.7em; border-radius: 999px; }
 @media (max-width: 880px){ .color-grid { grid-template-columns: repeat(3,1fr); } }
@@ -200,7 +200,10 @@ em { font-style: normal; font-weight: 500; opacity: 0.55; }
 .flow-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
 .flow-card .scene { aspect-ratio: 3/4; border-radius: 16px; position: relative; overflow: hidden; }
 .flow-card .scene .ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.flow-card .scene .tag { position: absolute; top: 0.8rem; left: 0.8rem; z-index: 2; }
+.flow-card .scene .tag { position: absolute; top: 0.9rem; left: 50%; transform: translateX(-50%); z-index: 2; font-family: var(--display); font-weight: 700; font-size: 0.9rem; letter-spacing: -0.01em; text-transform: none; padding: 0.45em 0.85em; white-space: nowrap; }
+.flow-card { text-align: center; }
+.flow-card h3 { margin-inline: auto; }
+.flow-card p { margin-inline: auto; max-width: 30ch; }
 .flow-card h3 { font-size: var(--s-1); margin-top: 0.9rem; }
 .flow-card p { color: var(--ink-soft); font-size: var(--s--1); margin-top: 0.2rem; }
 @media (max-width: 820px){ .flow-grid { grid-template-columns: 1fr; } }
@@ -321,7 +324,7 @@ footer { border-top: 1px solid var(--line); }
 .object-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(2rem, 4vw, 3rem); }
 .object-row figure { margin: 0; }
 .object-row img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 16px; display: block; }
-.object-row figcaption { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink-soft); margin-top: 0.7rem; }
+.object-row figcaption { font-family: var(--display); font-weight: 500; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--ink-soft); margin-top: 0.8rem; }
 @media (max-width: 760px) { .object-row { grid-template-columns: 1fr; } }
 
 /* faq */
@@ -513,8 +516,7 @@ h1, h2, h3 { letter-spacing: -0.032em; }
   align-items: center;
   padding-block: clamp(1rem, 3vh, 2.25rem);
   background:
-    linear-gradient(135deg, rgba(221,129,112,0.13), transparent 32%),
-    linear-gradient(315deg, rgba(143,194,207,0.16), transparent 36%),
+    linear-gradient(315deg, rgba(143,194,207,0.06), transparent 45%),
     var(--cream);
 }
 
@@ -729,8 +731,8 @@ h1, h2, h3 { letter-spacing: -0.032em; }
 }
 
 .final .btn[href="#waitlist"] {
-  background: var(--coral);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--cream);
 }
 
 .foot-bottom .links span {

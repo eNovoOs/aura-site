@@ -94,7 +94,7 @@
   document.querySelectorAll('[data-news-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var input = form.querySelector('input');
+      var input = form.querySelector('input[type="email"]') || form.querySelector('input');
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((input.value || '').trim())) {
         input.style.boxShadow = '0 0 0 2px #DD8170 inset';
         setTimeout(function () { input.style.boxShadow = ''; }, 1200);

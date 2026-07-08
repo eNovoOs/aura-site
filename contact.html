@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Aura · Why we put the magnet in the cap.</title>
-  <meta name="description" content="Every other MagSafe bottle puts the magnet in the wrong place. Here's the design conviction behind putting it in the cap: your phone at eye level." />
+  <title>Aura · Contact</title>
+  <meta name="description" content="Questions, press, wholesale, or just saying hi. A real person reads every message." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -34,33 +34,61 @@
   <div class="mobile-nav-foot"><a href="index.html#waitlist">Get $20 code</a><a href="https://www.tiktok.com/@aura">TikTok @aura</a><a href="contact.html">Contact</a></div>
 </div>
 
-<!-- ===== ARTICLE ===== -->
-<article class="article">
-  <div class="article-meta">Opinion · June 2026 · the founder</div>
-  <h1>Why we put the magnet in the cap, and nowhere else.</h1>
-  <img class="article-hero" src="assets/img/diagram.png" alt="Diagram: magnet placement logic, cap vs body" />
-  <div class="article-body">
-    <p>Here's my unpopular opinion about phone-mount bottles: almost all of them put the magnet in the wrong place. They stick it on the body, halfway down. So your phone ends up at chest height, or lower, and you spend the whole call, the whole set, the whole recipe looking <em>down</em>.</p>
-    <p>We put it in the cap. On top. The phone sits at eye level, where you'd actually hold it. That one decision is the whole reason Aura exists, so I want to defend it properly.</p>
-
-    <blockquote>The magnet isn't the feature. Every bottle in this category has a magnet. Where it sits is the feature.</blockquote>
-
-    <h2>Eye level, not down at your knees</h2>
-    <p>Film a set at the gym with the magnet on the body and you're shooting your own shins. Prop a phone on the cap and the camera's where your face is. Same magnet, completely different object. FaceTime, follow-alongs, filming: all of it works because the phone is up top.</p>
-
-    <h2>Twist the cap, change the angle</h2>
-    <p>Because it's the cap, you can turn it. No clamps, no clip-ons, no pro-tripod rig bolted to the side. You twist; the angle changes. That's it. It also means the cap is the part that has to be perfect, which is why it took eighteen versions, and why six of them leaked before one didn't.</p>
-
-    <h2>It still has to be a great bottle</h2>
-    <p>None of this matters if the thing sweats on your desk or tastes like metal. So: double-walled stainless, vacuum-sealed, leakproof when it's closed. The phone mount is the reason you notice it. The bottle is the reason you keep it.</p>
-
-    <p>That's the conviction. If you disagree, tell me. I read every reply.</p>
+<!-- ===== HEADER ===== -->
+<header class="page-head">
+  <div class="wrap">
+    <h1>Get in touch.</h1>
+    <p class="lede">Questions, press, wholesale, or just saying hi. A real person reads every message, and we answer them ourselves.</p>
   </div>
-</article>
-<div class="wrap" style="max-width:680px;padding-bottom:clamp(3rem,6vw,5rem)">
-  <a class="btn" href="shop.html">See the bottle <svg class="arr" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a class="text-link" href="journal.html" style="margin-left:1.2rem">Back to the journal</a>
-</div>
+</header>
+
+<!-- ===== CONTACT ===== -->
+<section style="padding-block:clamp(1rem,3vw,2rem) clamp(4rem,7vw,7rem)">
+  <div class="wrap cart-grid" style="align-items:start">
+
+    <!-- form -->
+    <div>
+      <form class="apply-form" data-news-form method="post" action="/contact#contact_form">
+        <input type="hidden" name="form_type" value="contact" />
+        <input type="hidden" name="contact[tags]" value="contact-form" />
+        <div class="row2">
+          <div><label class="sr-only" for="c-name">Name</label><input id="c-name" name="contact[name]" type="text" placeholder="Name" autocomplete="name" required /></div>
+          <div><label class="sr-only" for="c-email">Email</label><input id="c-email" name="contact[email]" type="email" placeholder="you@email.com" autocomplete="email" required /></div>
+        </div>
+        <div>
+          <label class="sr-only" for="c-topic">Topic</label>
+          <select id="c-topic" name="contact[topic]">
+            <option value="" disabled selected>What's this about?</option>
+            <option>An order</option>
+            <option>Press</option>
+            <option>Wholesale</option>
+            <option>Creator program</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div>
+          <label class="sr-only" for="c-body">Message</label>
+          <textarea id="c-body" name="contact[body]" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send message</button>
+      </form>
+      <div class="form-success" role="status">
+        Got it. We read every message and reply from a real inbox, usually within a couple of days.
+      </div>
+    </div>
+
+    <!-- details -->
+    <aside class="cart-summary">
+      <h2 style="font-size:var(--s-1);margin-bottom:1rem">Other ways to reach us.</h2>
+      <div class="cart-summary-row"><span>Email</span><span>hello@aura.com</span></div>
+      <div class="cart-summary-row"><span>Press &amp; wholesale</span><span>hello@aura.com</span></div>
+      <div class="cart-summary-row"><span>TikTok</span><span><a href="https://www.tiktok.com/@aura" style="text-decoration:underline">@aura</a></span></div>
+      <div class="cart-summary-row"><span>Based in</span><span>Miami, FL</span></div>
+      <p class="cart-assure" style="margin-top:1.4rem">We're a small team, and replies come from a person, not a script.</p>
+    </aside>
+
+  </div>
+</section>
 
 <!-- ===== FOOTER ===== -->
 <footer>

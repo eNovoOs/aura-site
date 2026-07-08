@@ -165,7 +165,7 @@
     AuraFlow: {
       price: 54,
       colors: [
-        { name: 'Pink',     hex: '#E08572', img: 'assets/img/products/auraflow-pink.png' },
+        { name: 'Pink',     hex: '#E7A9C0', img: 'assets/img/products/auraflow-pink.png' },
         { name: 'Lavender', hex: '#C6B4D6', img: 'assets/img/products/auraflow-lavender.png' },
         { name: 'Matcha',   hex: '#7A8B6F', img: 'assets/img/products/auraflow-matcha.png' },
         { name: 'Blue',     hex: '#8FC2CF', img: 'assets/img/products/auraflow-blue.png' },
@@ -175,7 +175,7 @@
     AuraFlex: {
       price: 44,
       colors: [
-        { name: 'Pink',     hex: '#E7B8B8', img: 'assets/img/products/auraflex-pink.png' },
+        { name: 'Pink',     hex: '#E7A9C0', img: 'assets/img/products/auraflex-pink.png' },
         { name: 'Lavender', hex: '#C6B4D6', img: 'assets/img/products/auraflex-lavender.png' },
         { name: 'Matcha',   hex: '#7A8B6F', img: 'assets/img/products/auraflex-matcha.png' },
         { name: 'Blue',     hex: '#8FC2CF', img: 'assets/img/products/auraflex-blue.png' },
